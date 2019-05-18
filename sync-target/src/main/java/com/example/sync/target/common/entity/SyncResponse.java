@@ -15,4 +15,10 @@ public class SyncResponse implements Serializable {
 
     /** 同步数据 */
     private String data;
+    //是否传送完毕
+    private String isFlinish;
+
+    //当前页
+    private String crerrctPage;
+
 }

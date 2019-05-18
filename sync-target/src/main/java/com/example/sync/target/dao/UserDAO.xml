@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sync.target.dao.UserDAO">
-  <resultMap id="BaseResultMap" type="com.example.sync.target.common.entity.User">
-    <result column="ID" jdbcType="BIGINT" property="id" />
-    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
-    <result column="USER_AGE" jdbcType="INTEGER" property="userAge" />
-  </resultMap>
 
-  <insert id="batchInsert" parameterType="java.util.List">
+  <insert id="batchInsert" parameterType="com.example.sync.target.common.entity.User">
+    <foreach collection="list" item="item">
     insert into sync_user
     (id, user_name, user_age)
     values
-    <foreach collection="list" item="item" index="index" separator=",">
       (#{item.id}, #{item.userName}, #{item.userAge})
     </foreach>
   </insert>

@@ -25,7 +25,7 @@ public class TargetController {
      * @return 同步的数据数量
      */
     @GetMapping("/start")
-    public Integer init(@RequestParam String table, @RequestParam String date) {
-        return targetService.start(table, date);
+    public Integer init(@RequestParam String taskName, @RequestParam String date) {
+        return targetService.start(taskName, date);
     }
 }

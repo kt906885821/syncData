@@ -28,22 +28,22 @@ public class TargetServiceImpl implements TargetService {
     private String sourceUrl;
 
     @Override
-    public Integer start(String table, String date) {
-        String data = this.pull(table, date);
-        return this.save(table, data);
+    public Integer start(String taskName, String date) {
+        String data = this.targetData(taskName, date);
+        return this.save(taskName, data);
     }
 
     @Override
-    public String pull(String table, String date) {
+    public String targetData(String taskName, String date) {
         SyncRequest syncRequest = new SyncRequest();
-        syncRequest.setTable(table);
+        syncRequest.setTaskName(taskName);
         syncRequest.setDate(date);
         return HttpClientUtils.send(sourceUrl, JSON.toJSONString(syncRequest));
     }
 
     @Override
-    public Integer save(String table, String data) {
-        if (SyncTable.SYNC_USER.equals(table)) {
+    public Integer save(String taskName, String data) {
+        if (SyncTable.SYNC_USER.equals(taskName)) {
             JSONObject jsonObject = JSONObject.parseObject(data);
             List<User> userList = JSON.parseArray(jsonObject.getString("data"), User.class);
             int row = userDAO.batchInsert(userList);

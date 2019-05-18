@@ -8,6 +8,8 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -16,7 +18,7 @@ import java.io.IOException;
  * @date 2019/1/20
  */
 public class HttpClientUtils {
-
+    private static Logger logger = LoggerFactory.getLogger(HttpClientUtils.class);
     /**
      * 发送数据
      *
@@ -33,6 +35,7 @@ public class HttpClientUtils {
         CloseableHttpResponse response = null;
         try {
             response = client.execute(httpPost);
+            logger.info(response.toString());
             int success = 200;
             if (response.getStatusLine().getStatusCode() == success) {
                 HttpEntity entity = response.getEntity();
@@ -43,7 +46,7 @@ public class HttpClientUtils {
                 return result;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("连接失败" + e);
         } finally {
             release(response);
         }
@@ -60,7 +63,7 @@ public class HttpClientUtils {
         // 配置连接参数
         return RequestConfig.custom()
                 .setConnectTimeout(1000)
-                .setConnectionRequestTimeout(1000)
+                .setConnectionRequestTimeout(30000)
                 .setSocketTimeout(1000 * 10)
                 .build();
     }
