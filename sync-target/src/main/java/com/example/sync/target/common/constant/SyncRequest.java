@@ -1,4 +1,4 @@
-package com.example.sync.target.common.entity;
+package com.example.sync.target.common.constant;
 
 import lombok.Data;
 
@@ -20,8 +20,13 @@ public class SyncRequest implements Serializable {
     private String date;
 
     //开始日期
-    private Integer startTime;
+    private String startTime;
     //结束日期
+
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public String getTaskName() {
         return taskName;
@@ -39,21 +44,21 @@ public class SyncRequest implements Serializable {
         this.date = date;
     }
 
-    public Integer getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Integer startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Integer getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Integer endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
-    private Integer endTime;
+    private String endTime;
 }

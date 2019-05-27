@@ -46,7 +46,7 @@ public class HttpClientUtils {
                 return result;
             }
         } catch (IOException e) {
-            logger.error("连接失败" + e);
+            logger.error("连接失败" + e.getMessage(),e);
         } finally {
             release(response);
         }

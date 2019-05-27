@@ -3,7 +3,7 @@ package com.example.sync.target.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.sync.target.common.constant.SyncTable;
-import com.example.sync.target.common.entity.SyncRequest;
+import com.example.sync.target.common.constant.SyncRequest;
 import com.example.sync.target.common.entity.User;
 import com.example.sync.target.common.util.HttpClientUtils;
 import com.example.sync.target.dao.UserDAO;
@@ -28,16 +28,17 @@ public class TargetServiceImpl implements TargetService {
     private String sourceUrl;
 
     @Override
-    public Integer start(String taskName, String date) {
-        String data = this.targetData(taskName, date);
+    public Integer start(String taskName, String startTime,String endTime) {
+        String data = this.targetData(taskName, startTime,endTime);
         return this.save(taskName, data);
     }
 
     @Override
-    public String targetData(String taskName, String date) {
+    public String targetData(String taskName, String startTime,String endTime) {
         SyncRequest syncRequest = new SyncRequest();
         syncRequest.setTaskName(taskName);
-        syncRequest.setDate(date);
+        syncRequest.setStartTime(startTime);
+        syncRequest.setEndTime(endTime);
         return HttpClientUtils.send(sourceUrl, JSON.toJSONString(syncRequest));
     }
 

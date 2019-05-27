@@ -13,7 +13,7 @@ public interface TargetService {
      * @param date  指定日期
      * @return
      */
-    Integer start(String taskName, String date);
+    Integer start(String taskName, String startTime,String endTime);
 
     /**
      * 获取指定日期的数据
@@ -22,7 +22,7 @@ public interface TargetService {
      * @param date  指定日期
      * @return
      */
-    String targetData(String taskName, String date);
+    String targetData(String taskName, String startTime,String endTime);
 
     /**
      * 保存数据

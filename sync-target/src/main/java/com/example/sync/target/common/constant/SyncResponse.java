@@ -1,4 +1,4 @@
-package com.example.sync.target.common.entity;
+package com.example.sync.target.common.constant;
 
 import lombok.Data;
 
