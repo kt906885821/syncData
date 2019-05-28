@@ -1,6 +1,6 @@
 package com.example.sync.source.controller;
 
-import com.example.sync.source.common.entity.SyncRequest;
+import
 import com.example.sync.source.service.SourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
