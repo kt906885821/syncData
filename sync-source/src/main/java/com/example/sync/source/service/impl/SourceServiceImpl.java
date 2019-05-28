@@ -30,7 +30,7 @@ public class SourceServiceImpl implements SourceService {
     @Override
     public String push(SyncRequest syncRequest) {
         String table = syncRequest.getTable();
-        String dateStr = syncRequest.getDate();
+        String dateStr = syncRequest.getStartTime();
         Date date;
         try {
             date = parseDateStr(dateStr);
