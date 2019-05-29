@@ -17,8 +17,10 @@ public interface UserDAO {
     /**
      * 查询指定日期的数据
      *
-     * @param date
-     * @return
      */
-    List<User> findByDate(@Param("date") Date date);
+    List<User> findByDate( String taskName,String startTime,String endTime);
+
+    int countBy();
+
+
 }

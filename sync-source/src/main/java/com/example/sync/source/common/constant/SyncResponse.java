@@ -15,4 +15,9 @@ public class SyncResponse implements Serializable {
 
     /** 同步数据 */
     private String data;
+
+
+
+
+
 }

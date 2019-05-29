@@ -11,5 +11,7 @@
         select * from sync_user where date_created = #{date,jdbcType=TIMESTAMP}
     </select>
 
-    <select id="countBy" 
+    <select id="countBy"  resultType="java.lang.Integer">
+        select count(1) from sync_user
+    </select>
 </mapper>

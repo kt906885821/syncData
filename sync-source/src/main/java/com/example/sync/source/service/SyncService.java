@@ -14,5 +14,5 @@ public interface SyncService<T> {
      *
      * @return
      */
-    List<T> query(Date date);
+    List<T> query(String taskName,String startTime,String endTime);
 }

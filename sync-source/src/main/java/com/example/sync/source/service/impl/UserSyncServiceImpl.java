@@ -20,7 +20,7 @@ public class UserSyncServiceImpl implements SyncService<User> {
     private UserDAO userDAO;
 
     @Override
-    public List<User> query(Date date) {
-        return userDAO.findByDate(date);
+    public List<User> query(Date date,String startTime,String endTime) {
+        return userDAO.findByDate(date,startTime,endTime);
     }
 }

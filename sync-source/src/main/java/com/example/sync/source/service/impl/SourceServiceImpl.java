@@ -30,18 +30,17 @@ public class SourceServiceImpl implements SourceService {
     @Override
     public String push(SyncRequest syncRequest) {
         String table = syncRequest.getTable();
-        String dateStr = syncRequest.getStartTime();
-        Date date;
-        try {
-            date = parseDateStr(dateStr);
-        } catch (ParseException e) {
-            return null;
-        }
+        String startTime = syncRequest.getStartTime();
+        String endTime = syncRequest.getEndTime();
         if (SyncTable.SYNC_USER.equals(table)) {
             SyncResponse response = new SyncResponse();
-            List<User> userList = userSyncService.query(date);
+            List<User> userList = userSyncService.query(table,startTime,endTime);
             response.setData(JSON.toJSONString(userList));
-            return JSON.toJSONString(response);
+            if (response != null && response.equals(" ")) {
+                return JSON.toJSONString(response);
+            }else {
+                return "传送完毕";
+            }
         }
         return null;
     }
